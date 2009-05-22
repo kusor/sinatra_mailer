@@ -14,6 +14,24 @@ For example:
             :body    => haml(:some_template)
     end
 
+Usage
+=====
+
+
+Classic top-level Sinatra style applications
+--------------------------------------------
+
+	require 'sinatra/mailer'
+
+Modular Sinatra style applications
+--------------------------------------------
+
+	require 'sinatra/mailer'
+
+	class MyModularApp < Sinatra::Base
+	  register Sinatra::Mailer
+	end
+
 Configuration
 =============
 
@@ -62,7 +80,7 @@ Credits
 =======
 
 This has been blatantly adapted from [Merb::Mailer][merb-mailer], so all credit
-is theirs, I just ported it to [Sinatra][].
+is theirs, I just ported it to [Sinatra][Sinatra].
 
 [merb-mailer]: http://github.com/wycats/merb-more/tree/master/merb-mailer
 [smtp-tls]: http://github.com/ambethia/smtp-tls/tree/master

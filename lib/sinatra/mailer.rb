@@ -39,8 +39,14 @@ module Sinatra
       attr_accessor :config, :delivery_method
     end
     
-    def email(mail_options={})
-      Email.new(mail_options).deliver!
+    module Helpers
+      def email(mail_options={})
+        Email.new(mail_options).deliver!
+      end
+    end
+
+    def self.registered(app)
+      app.helpers Sinatra::Mailer::Helpers
     end
 
     class Email
@@ -101,7 +107,5 @@ module Sinatra
     end
   end
   
-  class EventContext
-    include Mailer
-  end
+  register Mailer
 end
