@@ -44,6 +44,10 @@ class TestClassicApplication < Test::Unit::TestCase
     Sinatra::Application
   end
 
+  def teardown
+    Sinatra::Mailer.deliveries.clear
+  end
+
   def test_home_ok
     get '/'
     assert_equal 200, last_response.status
