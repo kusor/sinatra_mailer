@@ -7,14 +7,14 @@ require 'sinatra/base'
 require 'sinatra/mailer'
 
 class ModularAppSample < Sinatra::Base
-  
+
   register Sinatra::Mailer
-  
+
   configure do
     Sinatra::Mailer.config = {:sendmail_path => '/usr/sbin/sendmail'}
-    Sinatra::Mailer.delivery_method = :sendmail
+    Sinatra::Mailer.delivery_method = :test_send
   end
-  
+
   get '/' do
     'Modular sample application'
   end
@@ -39,23 +39,26 @@ rescue LoadError
 end
 
 class TestModularApplication < Test::Unit::TestCase
-  
+
   include Rack::Test::Methods
-  
+
   def app
     ModularAppSample.new
   end
-  
+
   def test_home_ok
     get '/'
     assert_equal 200, last_response.status
     assert last_response.body.length > 0
   end
-  
+
   def test_helper_method
     assert defined?(:email)
     get '/defined'
     assert_equal 200, last_response.status
+    assert_equal 1, Sinatra::Mailer.deliveries.size
+    delivery = Sinatra::Mailer.deliveries.last
+    assert delivery.kind_of?(MailFactory)
+    assert_equal ['foo@example.com'], delivery.get_header('to')
   end
-  
 end

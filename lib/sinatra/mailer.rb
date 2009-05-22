@@ -37,8 +37,14 @@ module Sinatra
   module Mailer
     class << self
       attr_accessor :config, :delivery_method
+
+      @@deliveries = []
+
+      def deliveries
+        @@deliveries
+      end
     end
-    
+
     module Helpers
       def email(mail_options={})
         Email.new(mail_options).deliver!
@@ -102,6 +108,11 @@ module Sinatra
         m = MailFactory.new()
         o.each { |k,v| m.send "#{k}=", v }
         @mail = m
+      end
+
+      # Tests mail sending by adding the mail to deliveries.
+      def test_send
+        Sinatra::Mailer.deliveries << @mail
       end
 
     end
