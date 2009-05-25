@@ -73,7 +73,7 @@ and not `:body`.
 Using sendmail
 --------------
 
-    Sinatra::Mailer.config = {:sendmail_path => '/somewhere/odd'}
+    Sinatra::Mailer.config = {:sendmail_path => '/somewhere/odd', :arguments => '-i -t'}
     Sinatra::Mailer.delivery_method = :sendmail
 
 Credits

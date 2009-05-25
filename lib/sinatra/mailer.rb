@@ -60,7 +60,8 @@ module Sinatra
 
       # Sends the mail using sendmail.
       def sendmail
-        sendmail = IO.popen("#{config[:sendmail_path]} #{@mail.to}", 'w+') 
+        sendmail_arguments = config[:sendmail_arguments] || "#{@mail.to}"
+        sendmail = IO.popen("#{config[:sendmail_path]} #{sendmail_arguments}", 'w+') 
         sendmail.puts @mail.to_s
         sendmail.close
       end

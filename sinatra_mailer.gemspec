@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "sinatra_mailer"
-  s.version  = "0.9.2"
-  s.date     = "2009-05-22"
+  s.version  = "0.9.3"
+  s.date     = "2009-05-26"
   s.summary  = "Send emails from Sinatra like Merb::Mailer"
   s.email    = "kusorbox@gmail.com"
   s.homepage = "http://github.com/kusor/sinatra-mailer/tree/master"
