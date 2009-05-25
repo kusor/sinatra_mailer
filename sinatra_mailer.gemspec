@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name     = "sinatra-mailer"
+  s.name     = "sinatra_mailer"
   s.version  = "0.9.2"
   s.date     = "2009-05-22"
   s.summary  = "Send emails from Sinatra like Merb::Mailer"
@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README.markdown"]
   s.extra_rdoc_files = ["README.markdown"]
 
-  # run git ls-files to get an updated list
   s.files = %w[
     LICENSE
     README.markdown

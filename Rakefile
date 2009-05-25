@@ -1,6 +1,7 @@
 require 'rake/gempackagetask'
+require 'rubygems/specification'
 
-$spec = eval(File.read('sinatra-mailer.gemspec'))
+$spec = eval(File.read('sinatra_mailer.gemspec'))
 
 Rake::GemPackageTask.new($spec) do |pkg|
   pkg.need_zip = true
